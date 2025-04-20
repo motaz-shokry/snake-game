@@ -1,8 +1,7 @@
 #include "game.h"
-#include "globals.h" // For cellCount
-#include "utils.h"   // For elementInDeque
-#include <iostream>  // For error reporting
-#include <raymath.h> // For Vector2Equals
+#include "globals.h"
+#include "utils.h"
+#include <raymath.h>
 
 // Initialize members using an initializer list
 // Crucially, initialize 'food' *after* 'snake' so snake.body exists
