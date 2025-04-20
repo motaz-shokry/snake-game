@@ -17,23 +17,15 @@ Game::Game()
         InitAudioDevice();
     }
 
-    // Load sounds with basic error checking
+    // Load sounds
     eatSound = LoadSound("assets/eat.mp3");
-    if (!IsSoundReady(eatSound)) {
-        std::cerr << "ERROR: Failed to load sound 'assets/eat.mp3'\n";
-    }
     wallSound = LoadSound("assets/wall.mp3");
-    if (!IsSoundReady(wallSound)) {
-        std::cerr << "ERROR: Failed to load sound 'assets/wall.mp3'\n";
-    }
 }
 
 Game::~Game() {
     // Unload sounds
-    if (IsSoundReady(eatSound))
-        UnloadSound(eatSound);
-    if (IsSoundReady(wallSound))
-        UnloadSound(wallSound);
+    UnloadSound(eatSound);
+    UnloadSound(wallSound);
 
     // Close audio device only if it was initialized
     if (IsAudioDeviceReady()) {
@@ -83,8 +75,7 @@ void Game::CheckCollisionWithFood() {
         food.position = food.GenerateRandomPos(snake.body);
         snake.addSegment = true; // Use correct member name
         score++;
-        if (IsSoundReady(eatSound))
-            PlaySound(eatSound);
+        PlaySound(eatSound);
     }
 }
 
@@ -113,8 +104,7 @@ void Game::CheckCollisionWithSelf() {
 }
 
 void Game::GameOver() {
-    if (IsSoundReady(wallSound))
-        PlaySound(wallSound);
+    PlaySound(wallSound);
     snake.Reset();
     // Generate food position based on the *reset* snake body
     food.position = food.GenerateRandomPos(snake.body);
