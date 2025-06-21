@@ -1,8 +1,8 @@
-#include "game.h"    // For Game class
-#include "globals.h" // For constants
-#include "utils.h"   // For eventTriggered
+#include "game.h"
+#include "globals.h"
+#include "utils.h"
 #include <raylib.h>
-#include <string> // For std::to_string
+#include <string>
 
 int main(void) {
     // Calculate window dimensions using constants
